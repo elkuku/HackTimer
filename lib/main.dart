@@ -8,19 +8,6 @@ void main() {
   runApp(const MyApp());
 }
 
-/*
-import 'dart:async';
-
-import 'package:desktop_notifications/desktop_notifications.dart';
-
-void main() async {
-  var client = NotificationsClient();
-  Timer.periodic(Duration(seconds:1), (Timer t)=>_getCurrentTime());
-  await client.notify('Hello World!');
-  //await client.close();
-}
-
- */
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -30,8 +17,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.green),
       ),
+      darkTheme: ThemeData.dark(),
       home: const MyHomePage(title: 'Hack Timer'),
     );
   }
@@ -57,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     setState(() {
       _counter++;
-      _secondsRemaining = 1 * 60;
+      _secondsRemaining = 60 * 60;
       _isRunning = true;
     });
   }
@@ -110,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        // backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
       body: Center(
@@ -118,11 +106,11 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'You have pushed the button this many times:',
+              'Hacks today:',
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+              style: Theme.of(context).textTheme.headlineLarge,
             ),
             Text(
               '$mins:$secs',
@@ -133,8 +121,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        tooltip: 'Start Timer',
+        child: const Icon(Icons.access_time_filled),
       ),
     );
   }
