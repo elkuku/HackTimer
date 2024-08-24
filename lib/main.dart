@@ -113,7 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.headlineLarge,
             ),
             Text(
-              '$mins:$secs',
+              '$mins:${secs <= 9 ? 0 : ''}$secs',
               style: const TextStyle(fontSize: 46),
             ),
           ],
